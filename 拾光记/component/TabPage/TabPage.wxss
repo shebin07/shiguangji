@@ -1,0 +1,89 @@
+/* component/TabPage/TabPage.wxss */
+
+.myCalendar{
+  background-color: white;
+  position: fixed;
+  width: 100%;
+}
+
+.tabpage_gap{
+  height: 30px;
+  width: 5%;
+  background-color: #F0F0F0;
+}
+
+.tabpage_out_of_tab{
+  height:auto;
+  width:100%;
+  background-color: #F0F0F0;
+  position: fixed;
+  z-index:7;
+  
+}
+.tabpage_tab{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.tabpage_tab_comp_1{
+  height:36px;
+  width:30%;
+  flex: left;
+  background-color:white;
+  display: inline-block;
+  border-color: lightgrey;
+  border-width: 0.1rpx;
+  border-style: solid;
+}
+
+.tabpage_tab_comp_1_focused{
+  height:36px;
+  width:30%;
+  flex: left;
+  background-color:#E6E6E6;
+  display: inline-block;
+  border-color: #bbb9b9;
+  border-width:1rpx;
+  border-style: solid;
+}
+.cover_open{
+  padding-top:870rpx;
+  background-color: #F0F0F0;
+  width: 100%;
+}
+
+.cover_close{
+  height:150rpx;
+  background-color: #F0F0F0;
+  width: 100%;
+}
+
+.cover_open_2{
+  height:1000rpx;
+  background-color: #F0F0F0;
+  width: 100%;
+}
+
+.cover_close_2{
+  height:280rpx;
+  background-color: #F0F0F0;
+  border-color: #F0F0F0;
+  border-width:1rpx;
+  border-style: solid;
+  width: 100%;
+  color:#F0F0F0;
+  z-index:7;
+}
+.tabpage_page_open{
+  padding-top:850rpx;
+  height:100%;
+  width:100%;
+}
+
+.tabpage_page_close{
+  padding-top:250rpx;
+  height:100%;
+  width:100%;
+}

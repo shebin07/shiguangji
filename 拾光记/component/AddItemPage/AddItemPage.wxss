@@ -1,0 +1,40 @@
+/* component/AddItemPage/AddItemPage.wxss */
+
+.additempage{
+  padding:30rpx;
+  background: white;
+}
+
+.additempage_input_name{
+  padding:30rpx;
+  border-color: darkgrey;
+  border-width:1rpx;
+  border-style: solid;
+}
+.additempage_picker{
+  padding:30rpx;
+  display:inline-block;
+}
+.additempage_picker_0{
+  padding:30rpx;
+  color:#5cafc2;
+  display:inline-block;
+}
+.additempage_picker_1{
+  padding:30rpx;
+  color:orange;
+  display:inline-block;
+}
+.additempage_picker_2{
+  padding:30rpx;
+  color:#fe8a8a;
+  display:inline-block;
+}
+.cover_button_left{
+  float:left;
+  width:50%;
+}
+.cover_button_right{
+  float:right;
+  width:50%;
+}

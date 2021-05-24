@@ -1,0 +1,41 @@
+<!--pages/home/home.wxml-->
+<view class="cover" hidden='{{addpage_isShow==false&&changepage_isShow==false}}'></view>
+<view class="home" >
+    <view class="cover_page" wx:if="{{addpage_isShow||changepage_isShow}}" >
+      <add-item-page bind:onBoxClicked="onBoxClicked" bind:onChangeOver="onChangeOver" Item="{{Item[changeitem_index]}}" ></add-item-page>
+  </view>
+  <!--悬浮球-->
+  <float-button bindtap="addItem"></float-button>
+  <tab-page id="myTabPage" catchtap="onOuterClicked" bind:onFocusedDayChanged="onFocusedDayChanged">
+    <text class="home_tab_name" slot="tab_slot_1" >{{tabName1}}</text>
+    <text class="home_tab_name" slot="tab_slot_2" >{{tabName2}}</text>
+    <text class="home_tab_name" slot="tab_slot_3">{{tabName3}}</text>
+    <view slot="page_slot_1">
+    <!--listitem  1-->
+    <view class="empty" hidden="{{month_all-month_finish!=0||month_finish!=0}}">当前暂无内容</view>
+      <view hidden="{{month_all-month_finish==0}}">待完成:</view>
+      <list-item bind:onItemClicked="changeItem" bind:onBoxClicked="changeBox" bind:onItemDelete="deleteItem" bind:sendToNext="sendItemToNext" wx:for="{{Item}}" wx:key="item"wx:index="index" wx:if="{{item.liType== liTypes[0]&&item.liFinish==false}}" Item="{{item}}" index="{{index}}"></list-item>
+      <view hidden="{{month_finish==0}}">已完成:</view>
+      <list-item  bind:onItemClicked="changeItem" bind:onBoxClicked="changeBox" bind:onItemDelete="deleteItem"bind:sendToNext="sendItemToNext" wx:for="{{Item}}" wx:key="item"wx:index="index" wx:if="{{item.liType== liTypes[0]&&item.liFinish==true}}" Item="{{item}}" index="{{index}}"></list-item>
+      
+      
+    </view>
+    <view slot="page_slot_2">
+      <!--listitem  2-->
+      <view class="empty" hidden="{{week_all-day_finish!=0||week_finish!=0}}">当前暂无内容</view>
+      <view hidden="{{week_all-week_finish==0}}">待完成:</view>
+      <list-item bind:onItemClicked="changeItem" bind:onBoxClicked="changeBox" bind:onItemDelete="deleteItem" bind:sendToNext="sendItemToNext" wx:for="{{Item}}" wx:key="item"wx:index="index" wx:if="{{item.liType== liTypes[1]&&item.liFinish==false}}" Item="{{item}}" index="{{index}}"></list-item>
+        <view hidden="{{week_finish==0}}">已完成:</view>
+      <list-item bind:onItemClicked="changeItem" bind:onBoxClicked="changeBox" bind:onItemDelete="deleteItem" bind:sendToNext="sendItemToNext" wx:for="{{Item}}" wx:key="item"wx:index="index" wx:if="{{item.liType== liTypes[1]&&item.liFinish==true}}" Item="{{item}}" index="{{index}}"></list-item>
+      
+    </view>
+    <view slot="page_slot_3">
+      <!--listitem  3-->
+       <view class="empty" hidden="{{day_all-day_finish!=0||day_finish!=0}}">当前暂无内容</view>
+      <view hidden="{{day_all-day_finish==0}}">待完成:</view>
+      <list-item bind:onItemClicked="changeItem" bind:onBoxClicked="changeBox" bind:onItemDelete="deleteItem" bind:sendToNext="sendItemToNext"wx:for="{{Item}}" wx:key="item"wx:index="index" wx:if="{{item.liType== liTypes[2]&&item.liFinish==false}}" Item="{{item}}" index="{{index}}"></list-item>
+        <view hidden="{{day_finish==0}}">已完成:</view>
+      <list-item bind:onItemClicked="changeItem" bind:onBoxClicked="changeBox" bind:onItemDelete="deleteItem" bind:sendToNext="sendItemToNext"wx:for="{{Item}}" wx:key="item"wx:index="index" wx:if="{{item.liType== liTypes[2]&&item.liFinish==true}}" Item="{{item}}" index="{{index}}"></list-item>
+    </view>
+  </tab-page>
+</view>

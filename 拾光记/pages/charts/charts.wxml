@@ -1,0 +1,32 @@
+<!--pages/charts/charts.wxml-->
+<view class="bg">
+  <view class="chart">
+    <view class="tab">
+      <button class="tab_button" bindtap="onDayPageClicked">日</button>
+      <button class="tab_button"  bindtap="onWeekPageClicked">周</button>
+      <button  class="tab_button"  bindtap="onMonthPageClicked">月</button>
+      <button  class="iconfont icon-arrow-double-left"  bindtap="onPrePageClicked"></button>
+      <button  class="iconfont icon-arrow-double-right"  bindtap="onAftPageClicked"></button>
+    </view>
+    <view class="page">
+        <view class="date">{{cur_year}}-{{cur_month}}-{{cur_day}}</view>
+        
+        <view hidden="{{page_hidden_day}}">
+          <view class="text">今日已创建事项：{{day_all}}个</view>
+          <view class="text">今日已完成事项：{{day_finish}}个</view>
+        </view>
+        <view hidden="{{page_hidden_week}}">
+          <view class="text">本周已创建事项：{{week_all}}个</view>
+          <view class="text">本周已完成事项：{{week_finish}}个</view>
+        </view>
+        <view hidden="{{page_hidden_month}}">
+          <view class="text">本月已创建事项：{{month_all}}个</view>
+          <view class="text">本月已完成事项：{{month_finish}}个</view>
+        </view>
+        <canvas  class="canvas" hidden="{{page_hidden_day}}" canvas-id="day"></canvas>
+        <canvas  class="canvas" hidden="{{page_hidden_week}}" canvas-id="week"></canvas>
+        <canvas  class="canvas" hidden="{{page_hidden_month}}" canvas-id="month"></canvas>
+  </view>
+  </view>
+  
+</view>

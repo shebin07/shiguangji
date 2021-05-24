@@ -1,0 +1,58 @@
+/* component/ListItem.wxss 
+
+  border-color: #bbb9b9;
+  border-width:1rpx;
+  border-style: solid;
+*/
+.container{
+  display:flex;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 15rpx;
+}
+.listItem{
+  padding: 30rpx;
+  width:100%;
+  border-radius: 1%;
+  background-color: #FEFEFE;
+}
+
+.listitem_view{
+  display:inline-block;
+  flex:1;
+}
+.listitem_checkbox{
+  flex:2;
+}
+
+.important_0{
+  width:10%;
+  color: #b2e5f0;
+  background-color: #b2e5f0;
+  height:130rpx;
+}
+
+.important_1{
+  width:10%;
+  color: #f6f6cb;
+  background-color: #f6f6cb;
+  height:130rpx;
+}
+
+.important_2{
+  width:10%;
+  color: #fe8a8a;
+  background-color: #fe8a8a;
+  height:130rpx;
+}
+
+.normal{
+  width:10%;
+  color: red;
+  background-color: red;
+  height:100rpx;
+}
+.itemflex{
+  display:flex;
+  flex-direction: row;
+}

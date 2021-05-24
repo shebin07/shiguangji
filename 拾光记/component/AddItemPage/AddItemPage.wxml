@@ -1,0 +1,21 @@
+<!--component/AddItemPage/AddItemPage.wxml-->
+<view bind:onChangeNo="onChangeNo">
+  <view class="additempage">
+    <input class="additempage_input_name" placeholder="事项名称" maxlength="20" type="text" bindfocus="onNameInputFocused" bindblur="onNameInputBlured" value="{{liName}}"></input>
+    <view>
+    <text>事项类型:</text>
+    <picker class="additempage_picker" bindchange="onTypePickerChange" value="{{(this.properties.Item.liType == 'month' ? 0 : (this.properties.Item.liType == 'week' ? 1 : 2))}}" range="{{liTypes}}">{{liType}}
+    </picker>
+    </view>
+    <view>
+     <text>重要程度:</text>
+    <picker class="{{liImportantIndex==0?'additempage_picker_0':(liImportantIndex==1?'additempage_picker_1':'additempage_picker_2')}}" bindchange="onImportantPickerChange" value="{{liImportants[liImportantIndex]}}" range="{{liImportants}}">{{liImportants[liImportantIndex]}}
+    </picker>
+    </view>
+    <input class="additempage_input_name" placeholder="详细信息" value="{{liInfo}}" bindfocus="onInfoInputFocused" bindblur="onInfoInputBlured"></input>
+  </view>
+  <view>
+    <Button class="cover_button_left" bindtap="onChangeYes">确定</Button>
+    <Button class="cover_button_right" bindtap="onChangeNo">取消</Button>
+  </view>
+</view>

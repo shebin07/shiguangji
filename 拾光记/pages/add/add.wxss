@@ -1,0 +1,54 @@
+/* pages/add/add.wxss */
+.page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction:column;
+  background-color: #E6E6E6;
+}
+.page-t {
+  width: 100%;
+  height:auto;
+  flex:9;
+}
+.content {
+  margin: 10rpx;
+  width:100%;
+  height:1200rpx;
+}
+.btns {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.sure{
+  width:50%;
+  background-color: #fafafa;
+}
+.cancel{
+  width:50%;
+  background-color:  #fafafa;
+}
+
+.record{
+  height: 150rpx;
+  width: 150rpx;
+  background-color:skyblue;
+  border-radius: 100%;
+  position:fixed;
+  bottom: 250rpx;
+  right: 30rpx;
+  z-index:9;
+}
+.record_icon{
+  height: 150rpx;
+  width: 150rpx;
+}
+.icon_record{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}

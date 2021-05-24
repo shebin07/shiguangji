@@ -1,0 +1,10 @@
+{"enablePullDownRefresh": true,
+  "backgroundColor": "#D3D3D3",
+  "usingComponents": {
+    "list-item":"../../component/ListItem/ListItem",
+    "tab-page": "../../component/TabPage/TabPage",
+    "float-button": "../../component/FloatButton/FloatButton",
+    "add-item-page":"../../component/AddItemPage/AddItemPage",
+    "calendar": "../../component/Calendar/Calendar"
+  }
+}

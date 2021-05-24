@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--    1 组件的自动扫描-->
+    <context:component-scan base-package="team.sgj">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+    <!--    2 视图解析器-->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!--    4 配置静态资源过滤,如果使用default-servlet-handler的方式,请结合web.xml中的配置-->
+    <!--    <mvc:default-servlet-handler />-->
+<!--    静态资源过滤，不需要springmvc处理，交给web服务器处理，微信小程序中的所有照片建议放在此处-->
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!--    5 配置拦截器-->
+<!--    <mvc:interceptors>-->
+<!--        &lt;!&ndash;        配置登录拦截器&ndash;&gt;-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            &lt;!&ndash;            添加排除的选项(静态资源和登录页)&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/user/login"/>-->
+<!--            <mvc:exclude-mapping path="/static/**"/>-->
+<!--            <bean class="team.sgj.interceptor.LoginInterceptor"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+    <!--    上传文件的组件-->
+    <!--    默认的解析器可以满足大部分需求,本例想使用put方式上传文件所以使用了自定义的解析器-->
+    <!--        <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+    <!--    使用了自定义的解析器,可以使用put方法上传文件-->
+    <bean id="multipartResolver" class="team.sgj.utils.ExtendMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="maxUploadSize" value="10000000"></property>
+    </bean>
+
+    <!--    5 解决$.get从控制器返回的中文乱码问题-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8;</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!--    3 自定义的日期类型转换器-->
+    <bean id="conversionServiceFactoryBean"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean id="stringToDateConvert" class="team.sgj.utils.StringToDateConvert"></bean>
+            </list>
+        </property>
+    </bean>
+    <!--    4 后端数据校验-->
+    <!--    4.1 后端数据校验的错误信息配置文件-->
+    <bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:customValidationMessages</value>
+            </list>
+        </property>
+        <!--        资源文件编码-->
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!--        资源文件内容缓存时间-->
+        <property name="cacheSeconds" value="120"></property>
+    </bean>
+    <bean class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
+          id="localValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+        <property name="validationMessageSource" ref="messageSource"></property>
+    </bean>
+    <!--    5 开启注解驱动支持-->
+    <!--    5.1 开启自定义的类型转换器-->
+    <!--    5.2 开启自定义的数据校验-->
+    <mvc:annotation-driven conversion-service="conversionServiceFactoryBean"
+                           validator="localValidatorFactoryBean"></mvc:annotation-driven>
+
+    <!--    6 全局异常处理器,初期代码调试的阶段请将此关闭,尽量让问题暴露出来-->
+<!--    <bean class="team.sgj.exception.CustomExceptionResolver" id="customExceptionResolver"></bean>-->
+</beans>

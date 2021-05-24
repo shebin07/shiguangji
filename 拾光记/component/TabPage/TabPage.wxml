@@ -1,0 +1,31 @@
+<!--component/TabPage/TabPage.wxml-->
+<view class="tabpage">
+  <view class="tabpage_out_of_tab" >
+  <calendar id="myCalendar" class="myCalendar"  bind:onCalendarClose="onCalendarCloseChange" bind:onFocusedDayChanged="onFocusedDayChanged"></calendar>
+  <view class="{{open_calendar?'cover_open':'cover_close'}}"></view>
+    <view class="tabpage_tab" >
+      <view  class="tabpage_gap"></view>
+      <view class="{{tabMonth}}" bindtap="changeToPageMonth">
+        <slot name="tab_slot_1">
+        </slot>
+      </view>
+      <view class="{{tabWeek}}" bindtap="changeToPageWeek">
+        <slot name="tab_slot_2">
+        </slot>
+      </view>
+      <view class="{{tabDay}}" bindtap="changeToPageDay">
+        <slot name="tab_slot_3">
+        </slot>
+      </view>
+      <view  class="tabpage_gap"></view>
+    </view>
+    
+  </view>
+
+  <view class="listitem_page">
+  <view class="{{open_calendar?'cover_open_2':'cover_close_2'}}">1</view>
+    <slot  name="page_slot_1" wx:if="{{show_page_month}}"></slot>
+    <slot  name="page_slot_2" wx:if="{{show_page_week}}"></slot>
+    <slot  name="page_slot_3" wx:if="{{show_page_day}}"></slot>
+  </view>
+</view>

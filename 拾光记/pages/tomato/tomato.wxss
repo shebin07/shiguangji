@@ -1,0 +1,104 @@
+/* pages/tomato/tomato.wxss */
+@keyframes rotate-bg-1 {
+  50%, 100% {
+    transform: rotateZ(180deg);
+  }
+}
+
+@keyframes rotate-bg-2 {
+  0%, 50% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(180deg);
+  }
+}
+
+@keyframes rotate-marker {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.clock-main {
+  position: absolute;
+  width: 500rpx;
+  height: 500rpx;
+  left: 125rpx;
+}
+
+.clock-main::after {
+  content: "";
+  background: #fff;
+  border-radius: 50%;
+  width: 375rpx;
+  height: 375rpx;
+  position: absolute;
+  left: 62.5rpx;
+  top: 62.5rpx;
+}
+
+.clock-container {
+  position: absolute;
+  width: 250rpx;
+  overflow: hidden;
+}
+
+.clock {
+  background: lightgrey;
+  width: 250rpx;
+  height: 500rpx;
+}
+
+.container1 {
+  left: 250rpx;
+}
+
+.clock-right {
+  border-radius: 0 500rpx 500rpx 0;
+  transform-origin: 0 50%;
+}
+
+.container2 {
+  right: 250rpx;
+}
+
+.clock-left {
+  border-radius: 500rpx 0 0 500rpx;
+  transform-origin: 250rpx 250rpx;
+}
+
+.marker {
+  background: #48cae4;
+  border-radius: 50%;
+  height: 62.5rpx;
+  width: 62.5rpx;
+  position: absolute;
+  top: 0;
+  left: 218.75rpx;
+}
+
+.end {
+  transform-origin: 31.25rpx 250rpx;
+}
+
+.timer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 500rpx;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color:darkslategrey;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.controller {
+  position: absolute;
+  bottom: 300rpx;
+}
+.start{
+  color:#48cae4; 
+}

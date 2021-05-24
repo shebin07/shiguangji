@@ -1,0 +1,19 @@
+<!--pages/tomato/tomato.wxml-->
+<view class="container">
+    <view class="clock-main">
+        <view class="clock-container container1">
+            <view class="clock clock-right" style="animation: {{clockRightStyle}};"></view>
+        </view>
+        <view class="clock-container container2">
+            <view class="clock clock-left" style="animation: {{clockLeftStyle}};"></view>
+        </view>
+        <view class="marker start"></view>
+        <view class="marker end" style="animation: {{spotStyle}};"></view>
+        <view class="timer">
+            <text>{{timer}}</text>
+        </view>
+    </view>
+    <view class="controller">
+        <button class="start" bindtap="switchStatus">{{actionName}}</button>
+    </view>
+</view>

@@ -1,0 +1,12 @@
+/* pages/help/help.wxss */
+.text{
+  margin-left:50rpx;
+  margin-right:30rpx;
+  margin-bottom:100rpx;
+  font-size: 12pt;
+  color:	#696969;
+}
+.title{
+  font-size:15pt;
+  
+}

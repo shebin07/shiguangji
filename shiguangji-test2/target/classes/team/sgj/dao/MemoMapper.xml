@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.sgj.dao.MemoMapper">
+  <resultMap id="BaseResultMap" type="team.sgj.domain.Memo">
+    <id column="m_id" jdbcType="INTEGER" property="mId" />
+    <result column="m_uid" jdbcType="INTEGER" property="mUid" />
+    <result column="m_info" jdbcType="VARCHAR" property="mInfo" />
+    <result column="m_add_time" jdbcType="TIMESTAMP" property="mAddTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    m_id, m_uid, m_info, m_add_time
+  </sql>
+  <select id="selectByExample" parameterType="team.sgj.domain.MemoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from memo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from memo
+    where m_uid = #{mUid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from memo
+    where m_id = #{mId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from memo
+    where m_id = #{mId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="team.sgj.domain.MemoExample">
+    delete from memo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="team.sgj.domain.Memo">
+    insert into memo (m_id, m_uid, m_info, 
+      m_add_time)
+    values (#{mId,jdbcType=INTEGER}, #{mUid,jdbcType=INTEGER}, #{mInfo,jdbcType=VARCHAR}, 
+      #{mAddTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="team.sgj.domain.Memo">
+    insert into memo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
+        m_id,
+      </if>
+      <if test="mUid != null">
+        m_uid,
+      </if>
+      <if test="mInfo != null">
+        m_info,
+      </if>
+      <if test="mAddTime != null">
+        m_add_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
+        #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="mUid != null">
+        #{mUid,jdbcType=INTEGER},
+      </if>
+      <if test="mInfo != null">
+        #{mInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="mAddTime != null">
+        #{mAddTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="team.sgj.domain.MemoExample" resultType="java.lang.Long">
+    select count(*) from memo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update memo
+    <set>
+      <if test="record.mId != null">
+        m_id = #{record.mId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mUid != null">
+        m_uid = #{record.mUid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mInfo != null">
+        m_info = #{record.mInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mAddTime != null">
+        m_add_time = #{record.mAddTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update memo
+    set m_id = #{record.mId,jdbcType=INTEGER},
+      m_uid = #{record.mUid,jdbcType=INTEGER},
+      m_info = #{record.mInfo,jdbcType=VARCHAR},
+      m_add_time = #{record.mAddTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="team.sgj.domain.Memo">
+    update memo
+    <set>
+      <if test="mUid != null">
+        m_uid = #{mUid,jdbcType=INTEGER},
+      </if>
+      <if test="mInfo != null">
+        m_info = #{mInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="mAddTime != null">
+        m_add_time = #{mAddTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="team.sgj.domain.Memo">
+    update memo
+    set m_uid = #{mUid,jdbcType=INTEGER},
+      m_info = #{mInfo,jdbcType=VARCHAR},
+      m_add_time = #{mAddTime,jdbcType=TIMESTAMP}
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+</mapper>

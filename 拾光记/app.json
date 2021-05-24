@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/log/log",
+    "pages/memo/memo",
+    "pages/add/add",
+    "pages/me/me",
+    "pages/help/help",
+    "pages/tomato/tomato",
+    "pages/charts/charts",
+    "pages/feedback/feedback",
+    "component/AddItemPage/AddItemPage",
+    "component/Calendar/Calendar",
+    "pages/event/event",
+    "pages/event/edit",
+    "pages/index/index",
+    "pages/clock/clock"
+    
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTitleText": "拾光记",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#1296db",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "事项",
+        "iconPath": "img/icon/item_before.png",
+        "selectedIconPath": "img/icon/item_after.png"
+      },
+      {
+        "pagePath": "pages/memo/memo",
+        "text": "备忘录",
+        "iconPath": "img/icon/memo_before.png",
+        "selectedIconPath": "img/icon/memo_after.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "img/icon/me_before.png",
+        "selectedIconPath": "img/icon/me_after.png"
+      }
+    ]
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.4",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
+    
+  "sitemapLocation": "sitemap.json"
+}

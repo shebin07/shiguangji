@@ -1,0 +1,19 @@
+/* component/FloatClick/FloatClick.wxss */
+.float_button{
+  height: 60px;
+  width: 60px;
+  background-color:#90e0ef;
+  border-radius: 100%;
+  position:fixed;
+  bottom: 150rpx;
+  right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+.floatbutton_text{
+  color:white;
+  font-size: 180rpx;
+  margin-bottom:25rpx;
+}

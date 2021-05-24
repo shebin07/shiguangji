@@ -1,0 +1,58 @@
+<!--component/Calendar/Calendar.wxml-->
+
+<view id="myCalendar" class="calendar">
+  <view hidden="{{!hide_calendar}}">
+    <view class="date_title">
+      <icon class="iconfont icon-arrow-double-left" bindtap="onDayPreClicked"></icon>
+      <view class="month_date">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月{{cur_day ||"--"}}日</view>
+      <icon class="iconfont icon-arrow-double-right" bindtap="onDayAftClicked"></icon>
+    </view>
+    <view class="close">
+      <view class="open_calendar" bindtap="closeCalendar">
+        <icon class="iconfont icon-arrow-double-bottom" size="10"></icon>
+      </view>
+    </view>
+  </view>
+  
+  <view class="open" hidden="{{hide_calendar}}">
+    <view class="date_title">
+        <icon class="iconfont icon-arrow-double-left" bindtap="onMonthPreClicked"></icon> 
+        <view class="month_date">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+        <icon class="iconfont icon-arrow-double-right" bindtap="onMonthAftClicked"></icon>
+    </view>
+    <view class="week_title">
+      <view wx:for="{{week_title}}" wx:key="index" data-idx="{{index}}">{{item}}</view>
+    </view>
+    <view class="days">
+      <!-- 列 -->
+      <view class="columns" wx:for="{{days.length/7}}" wx:for-index="i" wx:key="i">
+        <view wx:for="{{days}}" wx:for-index="j" wx:key="j">
+        <!-- 行 -->
+        <view class="rows" wx:if="{{j/7 == i}}">
+          <view  class="rows" wx:for="{{7}}" wx:for-index="k" wx:key="k">
+            <!-- 每个月份的空的单元格 -->
+            <view class="cell" wx:if="{{days[j+k] == null}}">
+              <text decode="{{true}}">&nbsp;&nbsp;</text>
+            </view>
+            <!-- 每个月份的有数字的单元格 -->
+            <view wx:else>
+                <view class="cell_special" bindtap="onDayClicked"  data-index="{{j+k}}" wx:if="{{days[j+k]==cur_day}}">
+                  <text>{{days[j+k]}}</text>
+                </view>
+                <view class="cell_today" bindtap="onDayClicked"  data-index="{{j+k}}" wx:elif="{{days[j+k]==to_day&&cur_year==to_year&&cur_month==to_month}}">
+                  <text>{{days[j+k]}}</text>
+                </view>
+                <view class="cell" bindtap="onDayClicked"  data-index="{{j+k}}" wx:else>
+                  <text>{{days[j+k]}}</text>
+                </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      </view>
+    </view>
+    <view class="close_calendar" bindtap="closeCalendar">
+      <icon class="iconfont icon-arrow-double-top" size="10"></icon>
+    </view>
+  </view>
+</view>

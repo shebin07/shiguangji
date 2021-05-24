@@ -1,0 +1,33 @@
+<!--pages/add/add.wxml-->
+
+<view class="page">
+
+    <view  class="record" type="primary" bindlongpress="postData" bindtouchend="stopData" >
+      <image class="record_icon" src="{{src}}" mode="widthFix"></image>
+    </view>
+ 
+  <form bindsubmit="submit" >
+    <textarea bindinput="textareaInput" class="content" placeholder="请输入文字，不能为空" name="textarea" value="{{content}}"></textarea>
+    
+    <view class="btns">
+      <button class="sure"  form-type="submit">提交</button>
+      <button class="cancel"  bindtap="cancel">取消</button>
+    </view>
+  </form>
+</view>
+
+
+
+<!-- 
+
+<view class="page">
+  <view class="page-t">
+    <textarea  class="content" bindconfirm="onTextAreaInput" placeholder="请输入文字，不能为空" value="{{content}}"></textarea>
+  </view>
+  <view class="btns">
+    <view class="sure" bindtap="sure">确定</view>
+    <view class="cancel" bindtap="cancel">取消</view>
+  </view>
+</view>
+
+ -->

@@ -1,0 +1,21 @@
+<!--pages/memo/memo.wxml-->
+<!--悬浮球-->
+<view class='page'>
+
+<float-button bindtap="add"></float-button>
+  <!-- 每一条文字 --> 
+  <view class="empty" hidden="{{memos[0]!=null}}">当前暂无内容</view> 
+  <view class="border">
+    <block wx:for="{{memos}}" wx:key="*this.id">
+     <view class="memo-i" bindtap="edit" bindlongpress="delete" data-index="{{index}}" data-memoItem="{{item}}">
+        <view class="content">{{item.mInfo}}</view>
+        <view class='time'>创建时间：{{item.mAddDate}}</view>
+      </view>
+    </block>
+  </view>
+  
+</view>
+
+<!-- <view class="memo-i" bindtap="edit" bindlongpress="delete" data-index="{{index}}" data-memoItem="{{item}}">
+
+<view class="{{index%4==0?'memo_0':(index%4==1?'memo_1':(index%4==2?'memo_2':'memo_3'))}}" bindtap="edit" bindlongpress="delete" data-index="{{index}}" data-memoItem="{{item}}"> -->

@@ -1,0 +1,32 @@
+<!--pages/me/me.wxml-->
+<view class="bg">
+<view class="me_container" >
+  <view class="me_userinfo">
+      <view bindlongtap="openClock" class="me_userinfo_avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="me_userinfo_nickname">
+        <open-data type="userNickName"></open-data>
+      </view>
+  </view>
+  <view class="cubes">
+    <image class="cube_img" bindtap="onTomatoClicked" src="/img/icon/tomato.png" mode="widthFix">
+    </image>
+    <image class="cube_img" bindtap="onCountdownClicked" src="/img/icon/calendar.png" mode="widthFix">
+    </image>
+    <image class="cube_img" bindtap="onChartsClicked" src="/img/icon/chart.png" mode="widthFix">
+    </image>
+  </view>
+ <view class="me_other">
+    <view class="me_help" bindtap="onHelpClicked">
+      <icon class="iconfont icon-feedback1" bindtap="onDayPreClicked"></icon>
+      <text class="me_help_text">  帮助</text>
+    </view>
+    <view class="me_help" bindtap="onFeedBackClicked">
+      <icon class="iconfont icon-feedback" bindtap="onDayPreClicked"></icon>
+      <text class="me_help_text">  反馈</text>
+    </view>
+ </view>
+ 
+</view>
+</view>

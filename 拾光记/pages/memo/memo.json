@@ -1,0 +1,6 @@
+{
+  "backgroundColor": "#D3D3D3",
+  "usingComponents": {
+    "float-button": "../../component/FloatButton/FloatButton"
+  }
+}

@@ -1,0 +1,5 @@
+<!--component/FloatClick/FloatClick.wxml-->
+  <view class="float_button">
+    <text class="floatbutton_text">+</text>
+  </view>
+

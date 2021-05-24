@@ -1,0 +1,31 @@
+/* pages/index/index.wxss */
+.title{padding: 0 50rpx 0 30rpx}
+.title .year{width:100%; display:inline-block; text-align:left; font-size:40rpx;}
+.title .neweventbutton{width:100%; display:inline-block; text-align:right; color:#ffcc33; font-size:60rpx; font-weight:bold;}
+.calendar{width:100%;  height: 215px;}
+.nodata {padding:100rpx 20rpx 20rpx 20rpx; text-align: center;line-height: 48rpx;font-size: 32rpx;color: #999;}
+.event{width:100%; font-size:30rpx}
+.event .date{ width:65%; display:inline-block;text-align: left; overflow:hidden;}
+.event .name{width: 35%; display: inline-block; text-align: right; overflow:hidden;}
+.weui-panel {
+  background-color: #FFFFFF;
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.weui-media-box {
+  padding: 15px;
+  position: relative;
+}
+.weui-media-box_appmsg {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.weui-cell_active {
+  background-color: #586C94;
+}

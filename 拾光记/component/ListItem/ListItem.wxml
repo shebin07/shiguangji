@@ -1,0 +1,8 @@
+<!--component/ListItem.wxml-->
+<view class="container" bindlongpress="longPressed" bindtap="onItemClicked">
+<view class="{{Item.liImportant==0?'important_0':(Item.liImportant==1?'important_1':'important_2')}}">1</view>
+<view class="listItem">
+    <checkbox  class="listitem_checkbox" checked="{{Item.liFinish}}" bindtap="onBoxClicked"></checkbox>
+    <view class="listitem_view" bindtap="onItemClicked">{{Item.liName}}</view>
+</view>
+</view>
