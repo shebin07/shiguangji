@@ -142,6 +142,6 @@ onLoginComplete:function(res){
       avatarUrl: "img/icon/me_before.png"
     },
     uid:-2,
-    url:"http://172.19.33.129:8088"
+    url:"http://localhost:8088"
   }
 })
